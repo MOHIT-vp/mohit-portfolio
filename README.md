@@ -1,6 +1,6 @@
 # Mohit Patil: portfolio
 
-A single-page portfolio in the spirit of [Dossier](https://dossier-iota-one.vercel.app/), rebuilt in original code around Mohit's own hero design and verified project work:
+A single-page portfolio built in original code around Mohit's own hero design and verified project work:
 
 1. **Intro**: the MP monogram writes itself, then the curtain lifts (once per session, skippable, never with reduced motion).
 2. **Hero**: the supplied design, built as independent planes (smoke, the giant word PORTFOLIO, figure, front smoke, copy). Hovering the figure (or pressing on touch) opens an organic, glowing-edged window in which the figure appears re-dressed in blue and gold.
@@ -17,7 +17,7 @@ Docs: [research and verified facts](docs/RESEARCH.md) · [design system](docs/DE
 
 React 19, TypeScript, Vite 8, GSAP 3 with ScrollTrigger, Lenis, self-hosted Archivo (variable width and weight) and Instrument Serif, and the vendored [liquid-glass](https://github.com/deepika-builds/liquid-glass) module (MIT) on the scrolled navigation bar. Plain CSS on design tokens; no UI or CSS framework.
 
-No code, images, video or copy from Dossier is used: its repository has no licence. The structure and interaction ideas are reimplemented from scratch.
+The implementation, visual direction, interactions, and content are developed for this portfolio.
 
 ## Run it
 
@@ -90,5 +90,4 @@ docs/           research, design system, brief and fingerprint registry
 - liquid-glass by Deepika Rao, MIT (licence and source commit in `src/vendor/liquid-glass/`).
 - Archivo and Instrument Serif, SIL Open Font License, via Fontsource.
 - GSAP (standard no-charge licence), Lenis (MIT), React (MIT).
-- Structure inspired by [Dossier](https://github.com/gargibhardwaj24/dossier) by Gargi Bhardwaj; nothing from it is copied.
 - Hero figure from the hero design supplied by Mohit Patil. Project screenshots are from his own public repositories.

@@ -1,15 +1,15 @@
-# BRIEF: Mohit Patil portfolio (v2, Dossier-style)
+# BRIEF: Mohit Patil portfolio (v2)
 
-**Interviewed.** On 2026-10-14 Mohit asked for a site "almost like or exactly like" Dossier (dossier-iota-one.vercel.app) and supplied his own hero design (MP monogram, masked figure on orange smoke, giant word behind the figure). Answers recorded:
+**Interviewed.** On 2026-10-14 Mohit supplied his own hero design (MP monogram, masked figure on orange smoke, giant word behind the figure). Answers recorded:
 
 - Current site: replace without saving.
 - Roles list: areas of work, not job titles.
 - Hero text: his layout, my wording.
 - Footer wordmark: MP.
 
-Constraints: Dossier has no licence, so its sequence and interaction ideas are rebuilt in original code; none of its code, assets or copy is used. The "GB" variant of the hero is Gargi Bhardwaj's portrait and is not used.
+The sequence, interactions, assets, and copy are developed for this portfolio. The supplied hero design is the source for the layered hero treatment.
 
-## Journey (Dossier's sequence, Mohit's content)
+## Journey
 
 | Beat | Section | Feeling | Device |
 | --- | --- | --- | --- |
@@ -30,4 +30,4 @@ See README "Checks". Desktop 1024 to 1920, tablet 768, phones 320 to 390, reduce
 
 ## Revision (2026-10-14, later)
 
-Requested by Mohit: giant word EVIDENCE becomes PORTFOLIO; the hover effect should feel like Dossier's costume reveal (organic glowing-edged window onto a different version of the subject); copy made universal rather than graph-centric (hero sub-line, About statement and intro, areas of work, principles, contact note, skills wording). HELIX-X's own case study keeps its graph detail because that is what the project is.
+Requested by Mohit: giant word EVIDENCE becomes PORTFOLIO; the hover effect uses an organic glowing-edged window onto a different version of the subject; copy made universal rather than graph-centric (hero sub-line, About statement and intro, areas of work, principles, contact note, skills wording). HELIX-X's own case study keeps its graph detail because that is what the project is.

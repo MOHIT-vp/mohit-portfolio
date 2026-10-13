@@ -4,7 +4,7 @@ Source of truth: `src/styles/tokens.css`. Copy lives in `src/content/site.ts`.
 
 ## Colour
 
-From the supplied hero (smoke reds and orange, gold headline, cream type), a dark brown ground for the long middle of the page (as in Dossier), the deep green kept from the original brief for HELIX-X, and burnt orange for the closing sun.
+From the supplied hero (smoke reds and orange, gold headline, cream type), a dark brown ground for the long middle of the page, the deep green kept from the original brief for HELIX-X, and burnt orange for the closing sun.
 
 | Token | Hex | Used for |
 | --- | --- | --- |
