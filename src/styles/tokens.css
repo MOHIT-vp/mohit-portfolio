@@ -1,0 +1,66 @@
+/*
+ * Design tokens.
+ * Palette from the supplied hero (smoke reds and orange, gold headline, cream type)
+ * plus a dark brown ground for the long middle of the page, the deep green kept
+ * from the original brief for HELIX-X, and burnt orange for the closing sun.
+ * Text pairs are checked by scripts/contrast.mjs.
+ */
+:root {
+  --c-cream: #f4ead8;
+  --c-cream-soft: #d8c7ae;
+  --c-gold: #f7ae3f;
+  --c-fire: #e8461c;
+  --c-ember: #e87f24;
+  --c-blood: #5e140c;
+  --c-brown: #241109;
+  --c-brown-2: #321a10;
+  --c-ink: #120806;
+  --c-green: #283f24;
+  --c-paper: #ece4d6;
+
+  --font-display: 'Archivo Variable', 'Arial Narrow', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', 'Times New Roman', serif;
+  --font-text: 'Archivo Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* fluid type, 360px to 1440px */
+  --t-hero: clamp(2.6rem, 1.2rem + 4.4vw, 5.4rem);
+  --t-giant: clamp(5rem, 1rem + 17vw, 20rem);
+  --t-h2: clamp(2.4rem, 1.2rem + 5vw, 6.2rem);
+  --t-h3: clamp(1.4rem, 1.1rem + 1.2vw, 2.1rem);
+  --t-lead: clamp(1.08rem, 0.98rem + 0.45vw, 1.35rem);
+  --t-body: clamp(0.98rem, 0.95rem + 0.15vw, 1.08rem);
+  --t-small: 0.875rem;
+  --t-label: 0.8rem;
+
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4.5rem;
+  --s-9: 7rem;
+  --s-10: 10rem;
+
+  --gutter: clamp(1.25rem, 4.6vw, 4.75rem);
+  --max: 1520px;
+  --measure: 60ch;
+
+  /* shape: controls are pills, project cards 18px, media 10px */
+  --r-pill: 999px;
+  --r-card: 18px;
+  --r-media: 10px;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --d-fast: 180ms;
+  --d-mid: 420ms;
+  --d-slow: 900ms;
+
+  --z-content: 2;
+  --z-nav: 40;
+  --z-menu: 50;
+  --z-dialog: 60;
+  --z-intro: 80;
+}
