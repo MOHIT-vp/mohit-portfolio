@@ -18,6 +18,7 @@ export function About() {
   const [path, setPath] = useState('');
   const [size, setSize] = useState({ w: 0, h: 0 });
   const [active, setActive] = useState<number | null>(null);
+  const span = useRef({ start: 0, end: 1 });
 
   // the curve's geometry follows the real positions of the I and the list
   useLayoutEffect(() => {
@@ -35,6 +36,7 @@ export function About() {
       const ex = l.right - s.left + Math.min(80, w * 0.05);
       const ey = l.bottom - s.top + 40;
       const midY = (sy + ey) / 2;
+      span.current = { start: sy, end: ey };
       setSize({ w, h: s.height });
       setPath(
         `M ${sx} ${sy} C ${sx} ${sy + 220}, ${w * 0.96} ${sy + 60}, ${w * 0.9} ${midY} S ${ex + 30} ${ey - 160}, ${ex} ${ey}`,
@@ -47,14 +49,33 @@ export function About() {
     return () => ro.disconnect();
   }, []);
 
+  // draw the curve with the scroll: its tip tracks a line 60% down the screen,
+  // so it grows from the I to the end of the list exactly as fast as you scroll
+  useEffect(() => {
+    const el = section.current;
+    const path = el?.querySelector<SVGPathElement>('.about__curve path');
+    if (!el || !path) return;
+    if (reducedMotion()) { path.style.strokeDashoffset = '0'; return; }
+    let raf = 0;
+    const draw = () => {
+      raf = 0;
+      const top = el.getBoundingClientRect().top;
+      const { start, end } = span.current;
+      const line = window.innerHeight * 0.6;
+      const p = Math.min(1, Math.max(0, (line - (top + start)) / Math.max(1, end - start)));
+      path.style.strokeDashoffset = String(1 - p);
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(draw); };
+    draw();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); cancelAnimationFrame(raf); };
+  }, [path]);
+
   useEffect(() => {
     const el = section.current;
     if (!el || reducedMotion()) return;
     const ctx = gsap.context(() => {
-      gsap.fromTo('.about__curve path', { strokeDashoffset: 1 }, {
-        strokeDashoffset: 0, ease: 'none',
-        scrollTrigger: { trigger: '.about__statement', start: 'center 60%', endTrigger: '.about__roles', end: 'bottom 70%', scrub: 0.8 },
-      });
       gsap.to('.about__emblem', { rotate: 40, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true } });
       gsap.from('.about__statement > span', {
         yPercent: 60, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.08,
