@@ -51,7 +51,7 @@ export const dive = {
 };
 
 export const about = {
-  statement: ['FROM DATA TO', 'INTERFACE,'],
+  statement: ['ONE COMMIT', 'AT A TIME,'],
   /** "I BUILD" + rotating word. The curve grows out of the I. */
   rotating: ['PRODUCTS', 'ML MODELS', 'AI AGENTS', 'BACKENDS'],
   intro:

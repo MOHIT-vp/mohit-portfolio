@@ -5,7 +5,7 @@ A single-page portfolio :
 1. **Intro**: the MP monogram writes itself, then the curtain lifts (once per session, skippable, never with reduced motion).
 2. **Hero**: the figure alone on the smoke, the giant word PORTFOLIO behind his head, and only the name and one button in the corner. Hovering the figure (or pressing on touch) opens an organic, glowing-edged window in which the figure appears re-dressed in blue and gold.
 3. **Dive**: a fire-red panel rises over the hero with LOOK CLOSER cut out of it. Scroll zooms through the stem of the L into a particle scene, where *from* HELLO, WORLD! TO PRODUCTION. lands.
-4. **About**: "From data to interface, I build ___" over a glowing emblem, a curve drawn by scroll out of the I, the areas I work on (with real screenshots on hover) and three principles.
+4. **About**: "One commit at a time, I build ___" over a glowing emblem, a curve drawn by scroll out of the I, the areas I work on (with real screenshots on hover) and three principles.
 5. **Featured work**: full-width and two-up slides built from real project screens; each opens a case-study dialog.
 6. **Skills**: one marquee and the tools grouped by job.
 7. **Contact**: a sun rises out of the floor and fills the screen; the invitation lands on it.
