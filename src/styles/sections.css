@@ -46,18 +46,12 @@
 
 .nav__mono {
   position: relative;
-  display: inline-flex;
   justify-self: start;
   font-family: var(--font-serif);
   font-size: 2.1rem;
   line-height: 1;
   letter-spacing: -0.02em;
   text-decoration: none;
-}
-
-/* MP ligature: the P shares the M's right stem */
-.mono__p {
-  margin-left: -0.19em;
 }
 
 .nav__links {
