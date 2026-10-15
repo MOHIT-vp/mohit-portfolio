@@ -229,7 +229,7 @@ export const projects: Project[] = [
     status: 'Built with a teammate; my contributions are listed above.',
     repo: 'https://github.com/MOHIT-vp/NEXUS',
     team: 'Team project',
-    shots: [],
+    shots: [{ src: 'nexus-home', h: 793, alt: 'NEXUS landing page: the headline Turn your profile into a placement strategy, a Start your assessment button, and an illustration of a man holding a tablet.' }],
     card: { size: 'half', tone: 'brown' },
   },
   {

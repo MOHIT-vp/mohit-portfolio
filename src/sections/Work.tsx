@@ -74,15 +74,6 @@ export function Work() {
 }
 
 function CardVisual({ project: p }: { project: Project }) {
-  if (p.id === 'nexus') {
-    return (
-      <div className="card__agents" aria-hidden="true">
-        {['Coordinator', 'Resume', 'Coding analytics', 'Skill gap', 'Job matching', 'Interview', 'Validation', 'Self-healing'].map((a, i) => (
-          <span key={a} style={{ '--i': i } as React.CSSProperties}>{a}</span>
-        ))}
-      </div>
-    );
-  }
   const [first, second] = p.shots;
   return (
     <div className={`card__shots${second && p.card.size === 'big' ? ' has-pair' : ''}`}>
