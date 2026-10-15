@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { hero, labels } from '../content/site';
+import { useEffect, useRef } from 'react';
+import { hero, labels, profile } from '../content/site';
 import { HeroReveal } from '../components/HeroReveal';
 import { reducedMotion } from '../lib/env';
 import { goTo, gsap } from '../lib/motion';
@@ -14,14 +14,6 @@ export function Hero() {
   const runway = useRef<HTMLDivElement>(null);
   const figure = useRef<HTMLDivElement>(null);
   const stage = useRef<HTMLDivElement>(null);
-  const [tag, setTag] = useState(hero.tags.length - 1);
-
-  // the underline under DESIGN · CODE · IDEAS walks across the three words
-  useEffect(() => {
-    if (reducedMotion()) return;
-    const id = window.setInterval(() => !document.hidden && setTag((t) => (t + 1) % hero.tags.length), 2600);
-    return () => window.clearInterval(id);
-  }, []);
 
   useEffect(() => {
     const el = runway.current;
@@ -32,15 +24,14 @@ export function Hero() {
       intro
         .from('.hero__figure', { yPercent: 8, opacity: 0, duration: 1.6 })
         .from('.hero__word', { yPercent: 30, opacity: 0, duration: 1.4 }, 0.15)
-        .from('.hero__copy > *', { y: 24, opacity: 0, duration: 1, stagger: 0.07 }, 0.3)
-        .from('.hero__tags', { opacity: 0, duration: 1 }, 0.6);
+        .from('.hero__corner > *', { y: 18, opacity: 0, duration: 1, stagger: 0.08 }, 0.5);
 
       const st = { trigger: el, start: 'top top', end: 'bottom bottom', scrub: true };
       gsap.to('.hero__bg', { scale: 1.08, yPercent: -4, ease: 'none', scrollTrigger: st });
       gsap.to('.hero__word', { yPercent: -22, ease: 'none', scrollTrigger: st });
       gsap.to('.hero__figure', { yPercent: -7, scale: 1.04, transformOrigin: '50% 100%', ease: 'none', scrollTrigger: st });
       gsap.to('.hero__front', { yPercent: -40, ease: 'none', scrollTrigger: st });
-      gsap.to('.hero__copy, .hero__tags', { y: () => (window.innerWidth < 761 ? -24 : -80), opacity: 0, ease: 'none', scrollTrigger: { ...st, end: 'center top', invalidateOnRefresh: true } });
+      gsap.to('.hero__corner', { y: -40, opacity: 0, ease: 'none', scrollTrigger: { ...st, end: 'center top' } });
       gsap.to('.hero__shade', { opacity: 0.6, ease: 'none', scrollTrigger: st });
     }, el);
     return () => ctx.revert();
@@ -76,24 +67,12 @@ export function Hero() {
           <HeroReveal stage={stage} figure={figure} />
           <div className="hero__shade" aria-hidden="true" />
 
-          <div className="hero__copy">
-            <p className="hero__eyebrow">{hero.eyebrow}</p>
-            <h1 id="hero-title" className="hero__title">
-              {hero.title.map((line, i) => (
-                <span key={line} className={`hero__line${i === 0 ? '' : ' is-gold'}`}>{line}</span>
-              ))}
-            </h1>
-            <p className="hero__sub">{hero.sub}</p>
-            <a className="btn btn--light" href="#work" onClick={(e) => { e.preventDefault(); goTo('#work'); }}>
+          <div className="hero__corner">
+            <h1 id="hero-title" className="hero__name">{profile.name}</h1>
+            <a className="btn btn--light btn--small" href="#work" onClick={(e) => { e.preventDefault(); goTo('#work'); }}>
               {labels.work} <span aria-hidden="true" className="btn__arrow">→</span>
             </a>
           </div>
-
-          <ul className="hero__tags" aria-label="Focus">
-            {hero.tags.map((t, i) => (
-              <li key={t} className={i === tag ? 'is-on' : ''}>{t}</li>
-            ))}
-          </ul>
         </div>
       </section>
     </div>

@@ -37,13 +37,8 @@ export const navLinks = [
 ] as const;
 
 export const hero = {
-  eyebrow: 'Mohit Patil',
-  /** First line in cream, the rest in gold, as in the supplied hero design. */
-  title: ['Building', 'systems that', 'show their work'],
-  sub: 'Apps, ML models and AI agents, built to be trusted.',
-  /** The giant word set behind the figure. */
+  /** The only words on the hero: the giant backdrop behind the head, and the name in the corner. */
   backdrop: 'PORTFOLIO',
-  tags: ['Models', 'Systems', 'Interfaces'],
   figureAlt: 'A figure in a carved, ribbed white mask and a dark draped cloak, lit from behind against orange smoke.',
 };
 

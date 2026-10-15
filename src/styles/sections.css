@@ -197,7 +197,8 @@
   position: absolute;
   left: 1.5vw;
   width: 97vw;
-  bottom: 8svh;
+  /* lifted so the head sits in front of the word */
+  top: 23svh;
   height: min(29svh, 19.5vw);
   overflow: visible;
   will-change: transform;
@@ -282,172 +283,57 @@
   pointer-events: none;
 }
 
-.hero__copy {
+.hero__corner {
   position: absolute;
   left: var(--gutter);
-  top: clamp(6rem, 14svh, 10rem);
-  width: min(41vw, 38rem);
-  display: grid;
-  justify-items: start;
-  gap: 1.2rem;
+  bottom: clamp(1.5rem, 5svh, 3rem);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
 }
 
-/* a scrim only where the copy sits, so the small text clears AA on the smoke */
-.hero__copy::before {
+/* a faint shade only behind the corner, so the small name clears AA on the smoke */
+.hero__corner::before {
   content: '';
   position: absolute;
-  inset: -18% -30% -40% -40%;
+  inset: -90% -40% -90% -25%;
   z-index: -1;
-  /* centred on the text, and fading to nothing well inside its (taller) box, so it never leaves a visible edge */
-  background: radial-gradient(ellipse 84% 60% at 40% 45%, rgb(70 14 6 / 0.42), rgb(70 14 6 / 0.22) 50%, transparent 72%);
+  background: radial-gradient(ellipse 60% 55% at 40% 50%, rgb(60 10 5 / 0.38), transparent 75%);
   pointer-events: none;
 }
 
-.hero__eyebrow {
+.hero__name {
   display: flex;
   align-items: center;
   gap: 0.9rem;
+  font-family: var(--font-text);
   font-size: var(--t-label);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--c-cream);
+  text-shadow: 0 1px 10px rgb(40 6 3 / 0.55);
 }
 
-.hero__eyebrow::before {
+.hero__name::before {
   content: '';
   width: 1.4rem;
   height: 1.5px;
   background: currentColor;
 }
 
-.hero__title {
-  font-family: var(--font-display);
-  /* bounded by height too, so short widescreens keep the CTA clear of the giant word */
-  font-size: clamp(2.2rem, min(0.6rem + 3.15vw, 6.1svh), 4rem);
-  font-weight: 620;
-  white-space: nowrap;
-  font-stretch: 100%;
-  line-height: 0.98;
-  letter-spacing: -0.025em;
-  text-transform: uppercase;
-  color: var(--c-cream);
+.btn--small {
+  min-height: 44px;
+  padding: 0 1.3rem;
+  font-size: 0.92rem;
 }
 
-.hero__line {
-  display: block;
-}
-
-.hero__line.is-gold {
-  /* a lighter gold than the rest of the site, so it holds 3:1 on the bright smoke */
-  color: #ffdb85;
-}
-
-.hero__sub {
-  max-width: 24ch;
-  /* short line, set large (24px+) so it reads as display text on the smoke */
-  font-size: clamp(1.5rem, min(1rem + 1vw, 3.2svh), 1.85rem);
-  font-weight: 500;
-  line-height: 1.45;
-  color: var(--c-cream);
-  text-shadow: 0 1px 12px rgb(60 10 5 / 0.45);
-}
-
-.hero__copy .btn {
-  margin-top: 0.4rem;
-}
-
-.hero__tags {
-  position: absolute;
-  right: var(--gutter);
-  top: 34svh;
-  display: flex;
-  align-items: center;
-  font-size: var(--t-label);
-  font-weight: 500;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-}
-
-.hero__tags li {
-  position: relative;
-  padding-block: 0.9rem;
-}
-
-.hero__tags li + li::before {
-  content: '';
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  margin: 0 1.4rem;
-  border-radius: 50%;
-  background: var(--c-gold);
-  vertical-align: middle;
-}
-
-.hero__tags li::after {
-  content: '';
-  position: absolute;
-  right: 0.3em;
-  bottom: 0;
-  width: calc(100% - 3.1rem);
-  height: 1.5px;
-  background: var(--c-cream);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 700ms var(--ease-out);
-}
-
-.hero__tags li:first-child::after {
-  width: calc(100% - 0.3em);
-}
-
-.hero__tags li.is-on::after {
-  transform: scaleX(1);
-}
-
-/* short screens: tighter copy so the button keeps clear of the giant word */
-@media (max-height: 820px) and (min-width: 761px) {
-  .hero__copy { gap: 0.85rem; }
-  .hero__copy .btn { margin-top: 0; }
-}
-
-/* laptops: the figure steps right so the headline keeps clear of the mask */
-@media (max-width: 1440px) {
-  .hero { --fig-x: 60%; }
-}
-
-/* narrower desktops and tablets: the figure steps further right so it never sits under the copy */
-@media (max-width: 1180px) {
-  .hero { --fig-h: 74svh; --fig-x: 66%; }
-  .hero__copy { width: min(46vw, 30rem); }
-  .hero__title { font-size: clamp(2rem, 0.4rem + 3.4vw, 3rem); }
-  .hero__tags { display: none; }
-}
-
-/* phones and portrait screens: copy on top, figure rising from the bottom */
+/* phones and portrait screens: a larger figure, the word still behind the head */
 @media (max-width: 760px), (max-aspect-ratio: 4/5) {
-  .hero { --fig-h: 47svh; --fig-x: 52%; }
-  .hero__copy {
-    left: var(--gutter);
-    right: var(--gutter);
-    top: 5.8rem;
-    width: auto;
-    gap: 1rem;
-  }
-  .hero__title { font-size: clamp(1.9rem, 0.7rem + 6.2vw, 3.4rem); white-space: normal; }
-  .hero__sub { max-width: 22ch; font-size: 1.5rem; }
-  .hero__word { bottom: 17svh; height: 25vw; }
+  .hero { --fig-h: 66svh; --fig-x: 52%; }
+  .hero__word { top: 40svh; height: 25vw; }
   .hero__front { height: 36svh; bottom: -4svh; }
-  .hero__tags { display: none; }
-}
-
-@media (max-height: 640px) and (max-width: 760px) {
-  .hero__sub { display: none; }
-}
-
-@media (max-width: 380px) {
-  .hero { --fig-h: 43svh; }
 }
 
 /* ═════════════ Dive ═════════════ */

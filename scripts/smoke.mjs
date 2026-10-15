@@ -96,13 +96,10 @@ const browser = await chromium.launch({ channel: 'chrome', headless: true });
 
   // hero text contrast measured on the rendered smoke
   // the sub-line is set at 24px or more, so the large-text bar (3:1) applies; checked, not assumed
-  const subPx = await page.evaluate(() => parseFloat(getComputedStyle(document.querySelector('.hero__sub')).fontSize));
-  const sub = await contrastBehind(page, '.hero__sub', [244, 234, 216]);
-  check(`hero sub-line contrast on smoke (${subPx >= 24 ? 'large text, 3:1' : 'AA, 4.5:1'})`, sub >= (subPx >= 24 ? 3 : 4.5), `worst ${sub}:1 at ${subPx}px`);
-  const lead = await contrastBehind(page, '.hero__line:first-child', [244, 234, 216]);
-  check('hero headline (cream) contrast on smoke (large text, 3:1)', lead >= 3, `worst ${lead}:1`);
-  const gold = await contrastBehind(page, '.hero__line.is-gold', [255, 219, 133]);
-  check('hero headline (gold) contrast on smoke (large text, 3:1)', gold >= 3, `worst ${gold}:1`);
+  // the hero's only text is the name in the corner: small, so it must clear AA (4.5:1) on the smoke
+  const name = await contrastBehind(page, '.hero__name', [244, 234, 216]);
+  check('hero name contrast on smoke (AA, 4.5:1)', name >= 4.5, `worst ${name}:1`);
+  check('the h1 is the name', await page.evaluate(() => document.querySelector('h1')?.textContent === 'Mohit Patil'));
   await page.reload({ waitUntil: 'networkidle' });
   await wait(page, 1500);
 
