@@ -105,7 +105,8 @@ def smoke(w, h, cx, cy, seed):
     d = np.sqrt(((xx - cx * w) / (w * 0.62)) ** 2 + ((yy - cy * h) / (h * 0.85)) ** 2)
     t = np.clip(np.clip(1.15 - d, 0, 1) ** 1.35 * 0.85 + (n - 0.5) * 0.55 + 0.08, 0, 1)
     stops = np.array([0, 0.22, 0.45, 0.68, 0.86, 1.0])
-    cols = np.array([[0x3a, 0x0b, 0x07], [0x7a, 0x17, 0x0c], [0xc4, 0x2f, 0x16], [0xee, 0x5a, 0x26], [0xfa, 0x86, 0x45], [0xff, 0xb4, 0x76]], np.float32) / 255
+    # no near-black anywhere: the darkest corner is still a deep orange-red
+    cols = np.array([[0xb3, 0x2e, 0x14], [0xcc, 0x3a, 0x18], [0xdf, 0x4a, 0x1e], [0xf0, 0x66, 0x2a], [0xfa, 0x8c, 0x48], [0xff, 0xb4, 0x76]], np.float32) / 255
     img = np.stack([np.interp(t, stops, cols[:, c]) for c in range(3)], -1)
     img += (rng.random((h, w, 1)).astype(np.float32) - 0.5) * 0.025
     return (np.clip(img, 0, 1) * 255).astype(np.uint8)

@@ -81,7 +81,8 @@ export function Nav() {
       <div className="nav__bar">
         <span className="nav__glass" ref={glass} aria-hidden="true" />
         <a className="nav__mono" href="#top" onClick={(e) => jump(e, '#top')} aria-label={`${profile.name}, back to top`}>
-          {profile.monogram}
+          {/* a ligature: the P grows out of the M's last stem */}
+          <span aria-hidden="true" className="mono">M<span className="mono__p">P</span></span>
         </a>
         <nav className="nav__links" aria-label="Sections">
           {navLinks.map((l) => (

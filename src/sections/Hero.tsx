@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { hero, labels, profile } from '../content/site';
+import { hero, profile } from '../content/site';
 import { HeroReveal } from '../components/HeroReveal';
 import { reducedMotion } from '../lib/env';
-import { goTo, gsap } from '../lib/motion';
+import { gsap } from '../lib/motion';
 
 /**
  * The supplied hero, built as independent planes:
@@ -69,9 +69,6 @@ export function Hero() {
 
           <div className="hero__corner">
             <h1 id="hero-title" className="hero__name">{profile.name}</h1>
-            <a className="btn btn--light btn--small" href="#work" onClick={(e) => { e.preventDefault(); goTo('#work'); }}>
-              {labels.work} <span aria-hidden="true" className="btn__arrow">→</span>
-            </a>
           </div>
         </div>
       </section>

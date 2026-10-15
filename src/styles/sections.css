@@ -46,12 +46,18 @@
 
 .nav__mono {
   position: relative;
+  display: inline-flex;
   justify-self: start;
   font-family: var(--font-serif);
   font-size: 2.1rem;
   line-height: 1;
   letter-spacing: -0.02em;
   text-decoration: none;
+}
+
+/* MP ligature: the P shares the M's right stem */
+.mono__p {
+  margin-left: -0.19em;
 }
 
 .nav__links {
@@ -293,15 +299,6 @@
   gap: 1rem 1.5rem;
 }
 
-/* a faint shade only behind the corner, so the small name clears AA on the smoke */
-.hero__corner::before {
-  content: '';
-  position: absolute;
-  inset: -90% -40% -90% -25%;
-  z-index: -1;
-  background: radial-gradient(ellipse 60% 55% at 40% 50%, rgb(60 10 5 / 0.38), transparent 75%);
-  pointer-events: none;
-}
 
 .hero__name {
   display: flex;
@@ -312,8 +309,16 @@
   font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--c-cream);
-  text-shadow: 0 1px 10px rgb(40 6 3 / 0.55);
+  /* dark ink reads on the bright smoke without any shading behind it */
+  color: var(--c-ink);
+}
+
+/* on phones the cloak fills the bottom of the screen, so the name moves to the top */
+@media (max-width: 760px), (max-aspect-ratio: 4/5) {
+  .hero__corner {
+    bottom: auto;
+    top: 5.6rem;
+  }
 }
 
 .hero__name::before {
@@ -323,11 +328,6 @@
   background: currentColor;
 }
 
-.btn--small {
-  min-height: 44px;
-  padding: 0 1.3rem;
-  font-size: 0.92rem;
-}
 
 /* phones and portrait screens: a larger figure, the word still behind the head */
 @media (max-width: 760px), (max-aspect-ratio: 4/5) {
